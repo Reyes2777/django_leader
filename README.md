@@ -1,7 +1,7 @@
 README
+======
 
 This is a test about leader django, is application build in Django Framework with postgresql
-============
 
 Installation
 ------------
