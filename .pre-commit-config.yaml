@@ -20,6 +20,6 @@ repos:
     hooks:
       - id: radon
         name: radon
-        entry: run_radon.sh
-        language: script
+        entry: radon cc -a -s -nc leader_django/
+        language: python
         types: [python]
