@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-1 col-xs-1 col-sm-1"></div>
+        <div  class="col-md-10 col-xs-10 col-sm-10">
+            <h3 class="round3" style="text-align:center;">Cities</h3>
+        </div>
+        <div class="col-md-1 col-xs-1 col-sm-1"></div>
+    </div>
+
+    {% if regions %}
+        <ul class="list-group">
+            {% for region in regions %}
+                <li class="list-group-item">{{ region.name },
+                    <a href="{% url 'update_region' region.id %}">
+                        <button type="button" class="btn btn-success">Update</button>
+                    </a>
+                    <a href="{% url 'delete_region' region.id %}">
+                        <button type="button" class="btn btn-danger">Delete</button>
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <h3>Please go to the admin and add a Name under 'MYAPP'</h3>
+    {% endif %}
+
+    <a href="{% url 'new_region' %}">
+        <button type="button" class="btn btn-primary">New Region</button>
+    </a>
+
+{% endblock %}

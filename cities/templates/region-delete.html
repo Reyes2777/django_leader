@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>Delete Region</h1>
+    <form method="post">
+        {% csrf_token %}
+        <h2>Are you sure you want remove {{region.name }} ?</h2>
+        <button type="submit">Confirm</button>
+    </form>
+{% endblock %}
