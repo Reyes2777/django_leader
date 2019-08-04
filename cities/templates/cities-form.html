@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h1>New/update Regions</h1>
+    <h1>Nueva o Actualización de Ciudades</h1>
 
     <form method="POST">
         {% csrf_token %}
@@ -8,8 +8,8 @@
         <button type="submit">Save</button>
     </form>
 
-    {% if region %}
-        <a href="{% url 'delete_region' region.id %}">
+    {% if city %}
+        <a href="{% url 'delete_city' city.id %}">
             <button type="button" class="btn btn-danger">Delete</button>
         </a>
     {% endif %}

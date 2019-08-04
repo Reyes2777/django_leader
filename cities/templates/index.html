@@ -1,21 +1,18 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="container-fluid">
+  <div class="container-fluid">
     <div class="row">
-        <div class="col-md-1 col-xs-1 col-sm-1"></div>
-        <div  class="col-md-10 col-xs-10 col-sm-10">
-            <h3 class="round3" style="text-align:center;">Cities</h3>
-        </div>
-        <div class="col-md-1 col-xs-1 col-sm-1"></div>
-    </div>
-
-    {% if regions %}
-        <table class="table">
+      <div class="col-md-6">
+          <div class="alert alert-info" role="alert">
+              Regiones
+          </div>
+          {% if regions %}
+        <table class="table ">
           <thead class="thead-dark">
             <tr>
-                <th scope="col">#</th>
-                <th scope="col">Region</th>
-                <th scope="col">Cities</th>
+                <th scope="col">Código</th>
+                <th scope="col">Nombre</th>
+                <th scope="col"></th>
                 <th scope="col"></th>
                 <th scope="col"></th>
             </tr>
@@ -32,24 +29,83 @@
                 </td>
                 <td>
                   <a href="{% url 'update_region' region.region.id %}">
-                      <button type="button" class="btn btn-success">UPDATE</button>
+                      <button type="button" class="btn btn-warning">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                      </button>
                   </a>
                 </td>
                 <td>
                   <a href="{% url 'delete_region' region.region.id %}">
-                      <button type="button" class="btn btn-danger">DELETE</button>
+                      <button type="button" class="btn btn-danger">
+                          <span class="glyphicon glyphicon-trash"></span>
+                      </button>
+
                   </a>
                 </td>
             </tr>
           {% endfor %}
           </tbody>
-
+        </table>
     {% else %}
-        <h3>Please go to the admin and add a Name under 'MYAPP'</h3>
+    <h3>Please go to the admin and add a Name under 'CITIES'</h3>
     {% endif %}
+          <a href="{% url 'new_region' %}">
+              <button type="button" class="btn btn-primary">Nueva Region</button>
+          </a>
+      </div>
 
-    <a href="{% url 'new_region' %}">
-        <button type="button" class="btn btn-primary">New Region</button>
-    </a>
+      <div class="col-md-6">
+          <div class="alert alert-warning" role="alert">
+              Ciudades
+          </div>
+          {% if cities %}
+        <table class="table ">
+          <thead class="thead-dark">
+            <tr>
+                <th scope="col">Código</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Estado</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+          {% for city in cities %}
+            <tr>
+                <th scope="row">{{ city.code }}</th>
+                <td>{{ city.name }}</td>
+                <td>
+                  {{ city.is_active}}
+                </td>
+                <td>
+                  <a href="{% url 'update_city' city.id %}">
+                      <button type="button" class="btn btn-warning">
+                        <span class="glyphicon glyphicon-pencil"></span>
+                      </button>
+                  </a>
+                </td>
+                <td>
+                  <a href="{% url 'delete_city' city.id %}">
+                      <button type="button" class="btn btn-danger">
+                          <span class="glyphicon glyphicon-trash"></span>
+                      </button>
+                  </a>
+                </td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+    {% else %}
+    <h3>Please go to the admin and add a Name under 'CITIES'</h3>
+    {% endif %}
+          <a href="{% url 'new_city' %}">
+              <button type="button" class="btn btn-primary">Nueva Ciudad</button>
+          </a>
+
+    </div>
+
+</div>
+
+
 
 {% endblock %}
