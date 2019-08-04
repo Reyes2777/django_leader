@@ -10,18 +10,40 @@
     </div>
 
     {% if regions %}
-        <ul class="list-group">
-            {% for region in regions %}
-                <li class="list-group-item">{{ region.name }}
-                    <a href="{% url 'update_region' region.id %}">
-                        <button type="button" class="btn btn-success">Update</button>
-                    </a>
-                    <a href="{% url 'delete_region' region.id %}">
-                        <button type="button" class="btn btn-danger">Delete</button>
-                    </a>
-                </li>
-            {% endfor %}
-        </ul>
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Region</th>
+                <th scope="col">Cities</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+          {% for region in regions %}
+            <tr>
+                <th scope="row">{{ region.region.code }}</th>
+                <td>{{ region.region }}</td>
+                <td>
+                  {% for city in region.cities %}
+                    {{ city.city }},
+                  {% endfor %}
+                </td>
+                <td>
+                  <a href="{% url 'update_region' region.region.id %}">
+                      <button type="button" class="btn btn-success">UPDATE</button>
+                  </a>
+                </td>
+                <td>
+                  <a href="{% url 'delete_region' region.region.id %}">
+                      <button type="button" class="btn btn-danger">DELETE</button>
+                  </a>
+                </td>
+            </tr>
+          {% endfor %}
+          </tbody>
+
     {% else %}
         <h3>Please go to the admin and add a Name under 'MYAPP'</h3>
     {% endif %}

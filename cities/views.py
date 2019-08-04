@@ -1,10 +1,13 @@
 from django.shortcuts import render, redirect
 from .models import Region
 from .forms import RegionForm
+from .cities_controller import CitiesController
 
 
 def index(request):
-    regions = Region.objects.all()
+    cities_controller = CitiesController()
+    regions = cities_controller.prepare_dict()
+    print('<<<<<<<<<<<<<<', regions)
     return render(request, 'index.html', {'regions': regions})
 
 
