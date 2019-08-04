@@ -12,7 +12,7 @@
     {% if regions %}
         <ul class="list-group">
             {% for region in regions %}
-                <li class="list-group-item">{{ region.name },
+                <li class="list-group-item">{{ region.name }}
                     <a href="{% url 'update_region' region.id %}">
                         <button type="button" class="btn btn-success">Update</button>
                     </a>
