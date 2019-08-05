@@ -1,9 +1,37 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h1>Eliminar ciudad </h1>
-    <form method="post">
-        {% csrf_token %}
-        <h2>Are you sure you want remove {{city.name }} </h2>
-        <button type="submit">Eliminar</button>
-    </form>
+<div class="container-fluid ">
+    <div class="row">
+        <div class="col-md-4">
+        </div>
+        <div class="col-md-4">
+            <div class="alert alert-danger " role="alert">
+                <h2>Eliminar ciudad </h2>
+                <form method="post">
+                    {% csrf_token %}
+                    <p>¿ Esta usted seguro de querer eliminar el municipio: {{city.name }} ? </p>
+                    <table class="table ">
+                        <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">
+                                <button type="submit" class="btn btn-danger">
+                                    <span class="glyphicon glyphicon-trash"></span>
+                                </button>
+                            </th>
+                            <th scope="col">
+                                <a href="{% url 'index' %}">
+                                    <button type="button" class="btn btn-info">
+                                        <span class="glyphicon glyphicon-remove"></span>
+                                    </button>
+                                </a>
+                            </th>
+                        </tr>
+                        </thead>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 {% endblock %}

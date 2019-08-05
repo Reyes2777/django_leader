@@ -3,9 +3,20 @@ from .models import Region, City
 
 
 class RegionForm(forms.ModelForm):
+    code = forms.CharField(
+        widget=forms.TextInput()
+    )
+    name = forms.CharField(
+        widget=forms.TextInput()
+    )
+
     class Meta:
         model = Region
-        fields = ['code', 'name']
+        fields = ['code', 'name', 'cities']
+        widgets = {
+            'name': forms.Textarea(),
+            'cities': forms.CheckboxSelectMultiple()
+        }
 
 
 class CityForm(forms.ModelForm):

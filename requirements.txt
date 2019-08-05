@@ -3,3 +3,4 @@ psycopg2==2.8.3
 pre-commit==1.17.0
 radon==3.0.3
 sphinx==2.1.2
+django-bootstrap-form==3.4

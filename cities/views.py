@@ -12,7 +12,6 @@ def index(request):
     cities_controller = CitiesController()
     regions = cities_controller.prepare_dict()
     cities = cities_controller.get_cities_from_db()
-    print('<<<<<<<<<<<<<<', regions, cities)
     return render(request, 'index.html', {'regions': regions, 'cities': cities})
 
 
@@ -22,6 +21,7 @@ def new_region(request):
 
     """
     form = RegionForm(request.POST or None)
+    print(form)
 
     if form.is_valid():
         form.save()

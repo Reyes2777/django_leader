@@ -1,16 +1,40 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h1>New/update Regions</h1>
+<div class="container-fluid ">
+    <div class="row">
+        <div class="col-md-4">
+        </div>
+        <div class="col-md-4">
+            <div class="alert alert-info " role="alert">
+                <form method="POST">
+                    {% load bootstrap %}
+                    {% csrf_token %}
+                    {{ form|bootstrap }}
+                    <table class="table ">
+                        <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">
+                                <button type="submit" class="btn btn-success">
+                                    <span class="glyphicon glyphicon-floppy-saved"></span>
+                                </button>
+                            </th>
+                            {% if region %}
+                            <th scope="col">
+                                <a href="{% url 'delete_region' region.id %}">
+                                <button type="button" class="btn btn-danger">
+                                    <span class="glyphicon glyphicon-trash"></span>
+                                </button>
+                            </a>
+                            </th>
+                            {% endif %}
 
-    <form method="POST">
-        {% csrf_token %}
-        {{ form }}
-        <button type="submit">Save</button>
-    </form>
+                        </tr>
+                        </thead>
+                    </table>
 
-    {% if region %}
-        <a href="{% url 'delete_region' region.id %}">
-            <button type="button" class="btn btn-danger">Delete</button>
-        </a>
-    {% endif %}
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
