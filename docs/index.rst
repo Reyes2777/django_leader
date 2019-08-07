@@ -11,6 +11,7 @@ Welcome to leader_django's documentation!
    :caption: Contents:
 
    contribuiting
+   cities/index
 
 
 

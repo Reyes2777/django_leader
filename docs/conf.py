@@ -12,8 +12,15 @@
 #
 import os
 import sys
-sys.path.insert(0, os.path.abspath('.'))
+import django
+from django.db.models.fields.files import FileDescriptor
 
+sys.path.insert(0, os.path.abspath('..'))
+os.environ['DJANGO_SETTINGS_MODULE'] = 'leader_django.settings'
+
+
+django.setup()
+FileDescriptor.__get__ = lambda self, *args, **kwargs: self
 
 # -- Project information -----------------------------------------------------
 
