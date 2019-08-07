@@ -1,13 +1,26 @@
 from django import forms
 from .models import Region, City
 
+CHOICES = City.objects.filter(is_active=True)
+
 
 class RegionForm(forms.ModelForm):
+
     code = forms.CharField(
-        widget=forms.TextInput()
+        required=False,
+        widget=forms.TextInput(),
+        label='Código',
+
     )
     name = forms.CharField(
-        widget=forms.TextInput()
+        required=False,
+        widget=forms.TextInput(),
+        label='Nombre'
+    )
+    cities = forms.CharField(
+        required=False,
+        label='Ciudades',
+        widget=forms.CheckboxSelectMultiple(choices=((x.id, x.name) for x in CHOICES))
     )
 
     class Meta:
@@ -15,7 +28,6 @@ class RegionForm(forms.ModelForm):
         fields = ['code', 'name', 'cities']
         widgets = {
             'name': forms.Textarea(),
-            'cities': forms.CheckboxSelectMultiple()
         }
 
 

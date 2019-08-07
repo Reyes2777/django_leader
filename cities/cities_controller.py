@@ -99,6 +99,8 @@ class CitiesController:
         dict_cities = []
         cities = region.cities.all()
         for city in cities:
+            if not city.is_active:
+                region.cities.remove(city)
             if city.is_active:
                 dict_cities.append({'city': city})
         return dict_cities

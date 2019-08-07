@@ -51,9 +51,9 @@ def update_region(request, id):
     """
     region = Region.objects.get(id=id)
     form = RegionForm(request.POST or None, instance=region)
-
     if form.is_valid():
         form.save()
+        print('<<<<<<<<<<<', form.is_valid())
         return redirect('index')
 
     return render(request, 'regions-form.html', {'form': form, 'region': region})
