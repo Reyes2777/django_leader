@@ -11,7 +11,7 @@ def index(request):
     """
     cities_controller = CitiesController()
     regions = cities_controller.prepare_dict()
-    cities = cities_controller.get_cities_from_db()
+    cities = City.objects.all()
     return render(request, 'index.html', {'regions': regions, 'cities': cities})
 
 

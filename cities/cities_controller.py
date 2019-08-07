@@ -1,4 +1,4 @@
-from .models import Region, City
+from .models import Region
 
 
 class CitiesController:
@@ -7,46 +7,6 @@ class CitiesController:
     """
     def __init__(self):
         self.regions = []
-
-    @staticmethod
-    def get_cities_from_db():
-        """
-        Methods for get all regions from Data Base
-        Returns:
-            (object): Queryset from DB
-
-        Examples:
-            .. code-block:: python3
-
-                from cities.cities_controllers import CitiesController
-
-                cities_controller = CitiesController()
-                data = cities_controller.get_cities_from_db
-
-                >> Queryset
-
-        """
-        return City.objects.all()
-
-    @staticmethod
-    def get_regions_from_db():
-        """
-        Methods for get all regions from Data Base
-        Returns:
-            (object): Queryset from DB
-
-        Examples:
-            .. code-block:: python3
-
-                from cities.cities_controllers import CitiesController
-
-                cities_controller = CitiesController()
-                data = cities_controller.get_regions_from_db
-
-                >> Queryset
-
-        """
-        return Region.objects.all()
 
     def prepare_dict(self):
         """
@@ -68,7 +28,7 @@ class CitiesController:
 
 
         """
-        regions = self.get_regions_from_db()
+        regions = Region.objects.all()
         for region in regions:
             cities = self.cities_from_region(region)
             self.regions.append(
