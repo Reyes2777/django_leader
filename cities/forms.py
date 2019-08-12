@@ -17,11 +17,10 @@ class RegionForm(forms.ModelForm):
         widget=forms.TextInput(),
         label='Nombre'
     )
-    cities = forms.MultipleChoiceField(
-        required=False,
-        label='Ciudades',
-        widget=forms.CheckboxSelectMultiple,
-        choices=((x.id, x.name) for x in CHOICES),
+    
+    cities = forms.ModelMultipleChoiceField(
+            widget=forms.CheckboxSelectMultiple,
+            required=True
     )
 
     class Meta:
