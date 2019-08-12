@@ -7,13 +7,13 @@ CHOICES = City.objects.filter(is_active=True)
 class RegionForm(forms.ModelForm):
 
     code = forms.CharField(
-        required=False,
+        required=True,
         widget=forms.TextInput(),
         label='Código',
 
     )
     name = forms.CharField(
-        required=False,
+        required=True,
         widget=forms.TextInput(),
         label='Nombre'
     )
