@@ -1,12 +1,10 @@
 from django import forms
 from .models import Region, City
 
-CHOICES = City.objects.filter(is_active=True)
+CHOICES = City.objects.all(is_active=True)
 
 
 class RegionForm(forms.ModelForm):
-    def __init__(self, *args, **kwargs):
-        super(RegionForm, self).__init__(*args, **kwargs)
 
     code = forms.CharField(
         required=True,
