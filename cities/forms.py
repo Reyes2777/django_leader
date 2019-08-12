@@ -20,7 +20,7 @@ class RegionForm(forms.ModelForm):
     
     cities = forms.ModelMultipleChoiceField(
             widget=forms.CheckboxSelectMultiple,
-            required=True
+            required=False
     )
 
     class Meta:
