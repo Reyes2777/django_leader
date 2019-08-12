@@ -1,8 +1,6 @@
 from django import forms
 from .models import Region, City
 
-CHOICES = City.objects.filter(is_active=True)
-
 
 class RegionForm(forms.ModelForm):
 
@@ -21,7 +19,7 @@ class RegionForm(forms.ModelForm):
         required=False,
         label='Ciudades',
         widget=forms.CheckboxSelectMultiple,
-        choices=((x.id, x.name) for x in CHOICES),
+        choices=((x.id, x.name) for x in City.objects.filter(is_active=True)),
     )
 
     class Meta:
