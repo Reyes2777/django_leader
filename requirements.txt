@@ -1,4 +1,4 @@
-django==2.2.8
+django==2.2.18
 psycopg2==2.7.7
 pre-commit==1.17.0
 radon==3.0.3
